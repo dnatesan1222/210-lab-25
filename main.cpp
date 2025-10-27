@@ -6,8 +6,11 @@
 #include <vector>
 #include <string>
 #include <iomanip>
+#include <list>
+#include <set>
 #include <chrono>
 using namespace std;
+using namespace std::chrono;
 
 int main() {
     auto start = high_resolution_clock::now();
@@ -22,13 +25,21 @@ int main() {
 
     auto start1 = high_resolution_clock::now();
     ifstream fin1("codes.txt");
-    list<string> list;
+    list<string> lst;
     while(getline(fin1, line))
-        list.push_back(line);
+        lst.push_back(line);
     auto end1 = high_resolution_clock::now();
-    auto duration1 = duration_cast<milliseconds>(end - start);
+    auto duration1 = duration_cast<milliseconds>(end1 - start1);
     cout << "Time taken: " << duration1.count() << " milliseconds\n";
 
+    auto start2 = high_resolution_clock::now();
+    ifstream fin2("codes.txt");
+    set<string> st;
+    while(getline(fin2, line))
+        st.insert(line);
+    auto end2 = high_resolution_clock::now();
+    auto duration2 = duration_cast<milliseconds>(end2 - start2);
+    cout << "Time taken: " << duration2.count() << " milliseconds\n";
 
     return 0;
 }
