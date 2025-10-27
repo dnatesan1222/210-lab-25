@@ -13,6 +13,7 @@ using namespace std;
 using namespace std::chrono;
 
 int main() {
+    int reading[3];
     auto start = high_resolution_clock::now();
     ifstream fin("codes.txt");
     string line;
@@ -22,24 +23,36 @@ int main() {
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(end - start);
     cout << "Time taken: " << duration.count() << " milliseconds\n";
+    reading[0] = duration.count();
 
-    auto start1 = high_resolution_clock::now();
+    start = high_resolution_clock::now();
     ifstream fin1("codes.txt");
     list<string> lst;
     while(getline(fin1, line))
         lst.push_back(line);
-    auto end1 = high_resolution_clock::now();
-    auto duration1 = duration_cast<milliseconds>(end1 - start1);
-    cout << "Time taken: " << duration1.count() << " milliseconds\n";
+    end = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end - start);
+    cout << "Time taken: " << duration.count() << " milliseconds\n";
+    reading[1] = duration.count();
 
-    auto start2 = high_resolution_clock::now();
+    start = high_resolution_clock::now();
     ifstream fin2("codes.txt");
     set<string> st;
     while(getline(fin2, line))
         st.insert(line);
-    auto end2 = high_resolution_clock::now();
-    auto duration2 = duration_cast<milliseconds>(end2 - start2);
-    cout << "Time taken: " << duration2.count() << " milliseconds\n";
+    end = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end - start);
+    cout << "Time taken: " << duration.count() << " milliseconds\n";
+    reading[2] = duration.count();
+
+    int sorting[3];    
+    start = high_resolution_clock::now();
+    lst.sort();
+    end = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end - start);
+    cout << "Time taken: " << duration.count() << " milliseconds\n";
+    sorting[1] = duration;
+
 
     return 0;
 }
