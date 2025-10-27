@@ -12,6 +12,8 @@
 using namespace std;
 using namespace std::chrono;
 
+void display(int [], int [], int [], int []);
+
 int main() {
     int reading[3];
     auto start = high_resolution_clock::now();
@@ -107,12 +109,17 @@ int main() {
     cout << "Time taken: " << duration.count() << " milliseconds\n";
     deleting[2] = duration.count();
 
+    display(reading, sorting, insert, deleting);
+
     return 0;
 }
 
 void display(int r[], int s[], int i[], int d[]){
-    cout << 
-
+    cout << "\tOperation\tVector\tList\tSet" << endl;
+    cout << "\tRead\t\t" << r[0] << '\t' << r[1] << '\t' << r[2] << endl;
+    cout << "\tSort\t\t" << s[0] << '\t' << s[1] << '\t' << s[2] << endl;
+    cout << "\tInsert\t\t" << i[0] << '\t' << i[1] << '\t' << i[2] << endl;
+    cout << "\tDelete\t\t" << d[0] << '\t' << d[1] << '\t' << d[2] << endl;
 }
 
 /* syntax examples:
