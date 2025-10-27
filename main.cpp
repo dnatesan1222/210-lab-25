@@ -84,7 +84,35 @@ int main() {
     cout << "Time taken: " << duration.count() << " milliseconds\n";
     insert[2] = duration.count();
 
+    int deleting[3];
+    
+    start = high_resolution_clock::now();
+    vect.clear();
+    end = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end - start);
+    cout << "Time taken: " << duration.count() << " milliseconds\n";
+    deleting[2] = duration.count();
+
+    start = high_resolution_clock::now();
+    lst.clear();
+    end = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end - start);
+    cout << "Time taken: " << duration.count() << " milliseconds\n";
+    deleting[2] = duration.count();
+
+    start = high_resolution_clock::now();
+    st.clear();
+    end = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end - start);
+    cout << "Time taken: " << duration.count() << " milliseconds\n";
+    deleting[2] = duration.count();
+
     return 0;
+}
+
+void display(int r[], int s[], int i[], int d[]){
+    cout << 
+
 }
 
 /* syntax examples:
