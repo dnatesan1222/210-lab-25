@@ -12,6 +12,8 @@
 using namespace std;
 using namespace std::chrono;
 
+//display() neatly outputs the results of the races
+//arguments: (4) int[] containing the result data
 void display(int [], int [], int [], int []);
 
 int main() {
@@ -24,9 +26,8 @@ int main() {
 	vect.push_back(line);
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(end - start);
-    cout << "Time taken: " << duration.count() << " milliseconds\n";
     reading[0] = duration.count();
-
+ 
     start = high_resolution_clock::now();
     ifstream fin1("codes.txt");
     list<string> lst;
@@ -34,7 +35,6 @@ int main() {
         lst.push_back(line);
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
-    cout << "Time taken: " << duration.count() << " milliseconds\n";
     reading[1] = duration.count();
 
     start = high_resolution_clock::now();
@@ -44,7 +44,6 @@ int main() {
         st.insert(line);
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
-    cout << "Time taken: " << duration.count() << " milliseconds\n";
     reading[2] = duration.count();
 
     int sorting[3];
@@ -53,14 +52,12 @@ int main() {
     sort(vect.begin(), vect.end());
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
-    cout << "Time taken: " << duration.count() << " milliseconds\n";
     sorting[0] = duration.count();
     
     start = high_resolution_clock::now();
     lst.sort();
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
-    cout << "Time taken: " << duration.count() << " milliseconds\n";
     sorting[1] = duration.count();
     
     sorting[2] = -1;
@@ -68,22 +65,23 @@ int main() {
     int insert[3];
    
     start = high_resolution_clock::now();
+    vect.insert(vect.begin() + vect.size() / 2, "TESTCODE");
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
-    cout << "Time taken: " << duration.count() << " milliseconds\n";
     insert[0] = duration.count();
 
     start = high_resolution_clock::now();
+    auto it = lst.begin();
+    advance(it, lst.size() / 2);
+    lst.insert(it, "TESTCODE");
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
-    cout << "Time taken: " << duration.count() << " milliseconds\n";
     insert[1] = duration.count();
 
     start = high_resolution_clock::now();
     st.insert("TESTCODE");
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
-    cout << "Time taken: " << duration.count() << " milliseconds\n";
     insert[2] = duration.count();
 
     int deleting[3];
@@ -92,21 +90,18 @@ int main() {
     vect.clear();
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
-    cout << "Time taken: " << duration.count() << " milliseconds\n";
-    deleting[2] = duration.count();
+    deleting[0] = duration.count();
 
     start = high_resolution_clock::now();
     lst.clear();
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
-    cout << "Time taken: " << duration.count() << " milliseconds\n";
-    deleting[2] = duration.count();
+    deleting[1] = duration.count();
 
     start = high_resolution_clock::now();
     st.clear();
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
-    cout << "Time taken: " << duration.count() << " milliseconds\n";
     deleting[2] = duration.count();
 
     display(reading, sorting, insert, deleting);
