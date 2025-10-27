@@ -45,14 +45,44 @@ int main() {
     cout << "Time taken: " << duration.count() << " milliseconds\n";
     reading[2] = duration.count();
 
-    int sorting[3];    
+    int sorting[3];
+
+    start = high_resolution_clock::now();
+    sort(vect.begin(), vect.end());
+    end = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end - start);
+    cout << "Time taken: " << duration.count() << " milliseconds\n";
+    sorting[0] = duration.count();
+    
     start = high_resolution_clock::now();
     lst.sort();
     end = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(end - start);
     cout << "Time taken: " << duration.count() << " milliseconds\n";
-    sorting[1] = duration;
+    sorting[1] = duration.count();
+    
+    sorting[2] = -1;
 
+    int insert[3];
+   
+    start = high_resolution_clock::now();
+    end = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end - start);
+    cout << "Time taken: " << duration.count() << " milliseconds\n";
+    insert[0] = duration.count();
+
+    start = high_resolution_clock::now();
+    end = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end - start);
+    cout << "Time taken: " << duration.count() << " milliseconds\n";
+    insert[1] = duration.count();
+
+    start = high_resolution_clock::now();
+    st.insert("TESTCODE");
+    end = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(end - start);
+    cout << "Time taken: " << duration.count() << " milliseconds\n";
+    insert[2] = duration.count();
 
     return 0;
 }
